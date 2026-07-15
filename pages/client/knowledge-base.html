@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Base - BharatVoice</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    
+</head>
+<body class="dark-theme">
+    <div class="dashboard-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="../../index.html" class="sidebar-logo">
+                    <span class="logo-text">BharatVoice</span>
+                </a>
+                <button class="sidebar-close" id="sidebarClose">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="sidebar-link">
+                    <span class="sidebar-icon">📊</span> Dashboard
+                </a>
+                <a href="knowledge-base.html" class="sidebar-link active">
+                    <span class="sidebar-icon">📚</span> Knowledge Base
+                </a>
+                <a href="conversations.html" class="sidebar-link">
+                    <span class="sidebar-icon">💬</span> Conversations
+                </a>
+                <a href="analytics.html" class="sidebar-link">
+                    <span class="sidebar-icon">📈</span> Analytics
+                </a>
+                <a href="settings.html" class="sidebar-link">
+                    <span class="sidebar-icon">⚙️</span> Settings
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn btn-secondary btn-block" onclick="handleLogout()">Logout</button>
+            </div>
+        </aside>
+
+        <main class="dashboard-main">
+            <div class="dashboard-header">
+                <button class="hamburger-toggle" id="hamburgerToggle">☰</button>
+                <div class="header-search">
+                    <input type="text" class="search-input" placeholder="Search documents...">
+                </div>
+                <div class="header-actions">
+                    <div class="profile-menu">
+                        <button class="profile-btn" onclick="toggleProfileDropdown(event)">
+                            <div class="avatar" id="kbAvatar">U</div>
+                        </button>
+                        <div class="profile-dropdown" id="profileDropdown">
+                            <a href="settings.html">Settings</a>
+                            <a href="#" onclick="handleLogout(); return false;">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-content">
+                <h1>Knowledge Base</h1>
+                <p style="margin-bottom: 32px;">Upload your business documents — your AI agent will read, index, and answer questions from them.</p>
+
+                <div class="card" style="margin-bottom: 32px;">
+                    <div class="upload-zone" id="kbUploadZone">
+                        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <h3>Drag and drop your files here</h3>
+                        <p>PDF, DOCX, TXT, CSV, JSON (Max 50MB each)</p>
+                        <button type="button" class="btn btn-primary" id="kbBrowseBtn">Browse Files</button>
+                        <input type="file" id="kbFileInput" style="display: none;" multiple accept=".pdf,.docx,.txt,.csv,.json">
+                    </div>
+                    <div class="upload-queue" id="kbUploadQueue"></div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Total Documents</div>
+                        <div class="metric-value" id="kbDocCount">0</div>
+                        <div class="metric-subtext">PDF, DOCX, TXT files</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Total Chunks</div>
+                        <div class="metric-value" id="kbChunkCount">0</div>
+                        <div class="metric-subtext">AI-indexed text chunks</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Vector Store</div>
+                        <div class="metric-value" id="kbVectorStatus" style="font-size: 20px; color: #10B981;">Ready</div>
+                        <div class="metric-subtext">Up-to-date indexing</div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top: 32px;">
+                    <h3 style="margin-bottom: 24px;">Uploaded Documents</h3>
+                    <div class="table-wrapper">
+                        <table data-table="documents">
+                            <thead>
+                                <tr>
+                                    <th>Document Name</th>
+                                    <th>File Type</th>
+                                    <th>Upload Date</th>
+                                    <th>Status</th>
+                                    <th>Size</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="documentsTableBody">
+                                <tr><td colspan="6" style="text-align: center; color: #94A3B8;">Loading documents...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="toast-stack" id="toastStack"></div>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/noDirectFlow.js"></script>
+    <script src="../../js/knowledge-base.js"></script>
+</body>
+</html>

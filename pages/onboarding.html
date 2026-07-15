@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onboarding - BharatVoice</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/auth.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <div class="onboarding-container">
+        <div class="progress-wrapper">
+            <div class="progress-bar" id="onboardingProgress" style="width: 33%"></div>
+        </div>
+
+        <div class="onboarding-card">
+            <div class="step-indicator">
+                <div class="steps">
+                    <div class="step-dot active" data-step="1"><span>1</span></div>
+                    <div class="step-dot" data-step="2"><span>2</span></div>
+                    <div class="step-dot" data-step="3"><span>3</span></div>
+                </div>
+                <span class="step-counter"><span id="currentStep">1</span> of 3</span>
+            </div>
+
+            <div class="onboarding-content">
+                
+                <div class="onboarding-step active" data-step="1">
+                    <h2>Business Information</h2>
+                    <p>Tell us about your business profile</p>
+                    
+                    <form class="onboarding-form" id="formStep1" style="margin-top: var(--spacing-lg);">
+                        <div class="form-group">
+                            <label for="step1-business" class="form-label">Business Name</label>
+                            <input type="text" id="step1-business" class="form-input" placeholder="Your Pharmacy / Store" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="step1-industry" class="form-label">Industry</label>
+                            <select id="step1-industry" class="form-input" required style="background: var(--card-bg); color: white; border: 1px solid var(--border-color);">
+                                <option value="" disabled selected>Select industry</option>
+                                <option value="medical">Medical/Pharmacy</option>
+                                <option value="retail">Retail</option>
+                                <option value="hospitality">Hospitality</option>
+                                <option value="salon">Salon/Spa</option>
+                                <option value="clinic">Clinic</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="step1-phone" class="form-label">Phone Number (E.164 format)</label>
+                            <input type="tel" id="step1-phone" class="form-input" placeholder="+919876543210" required>
+                        </div>
+                    </form>
+
+                    <button class="btn btn-primary btn-block" id="btnNext1" style="margin-top: var(--spacing-md);">Continue to WhatsApp Setup</button>
+                </div>
+
+                <div class="onboarding-step" data-step="2">
+                    <h2>Connect WhatsApp Number</h2>
+                    <p>Link your Meta WhatsApp Business integration nodes</p>
+                    
+                    <form class="onboarding-form" id="formStep2" style="margin-top: var(--spacing-lg);">
+                        <div class="form-group">
+                            <label for="step2-phone" class="form-label">WhatsApp Number</label>
+                            <input type="tel" id="step2-phone" class="form-input" placeholder="+919876543210" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="step2-phoneid" class="form-label">Phone Number ID</label>
+                            <input type="text" id="step2-phoneid" class="form-input" placeholder="Paste from Meta Business Manager" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="step2-account" class="form-label">Business Account ID</label>
+                            <input type="text" id="step2-account" class="form-input" placeholder="Your Meta Business Account ID" required>
+                        </div>
+                    </form>
+
+                    <a href="https://developers.facebook.com/docs/whatsapp" target="_blank" class="help-link" style="display: block; margin-top: 8px; font-size: 13px; color: var(--primary-accent);">Meta Developer Documentation</a>
+
+                    <div class="button-group" style="display: flex; gap: var(--spacing-sm); margin-top: var(--spacing-lg);">
+                        <button class="btn btn-secondary btn-block onboarding-prev" onclick="switchStep(1)">Back</button>
+                        <button class="btn btn-primary btn-block" id="btnNext2">Continue to RAG Documents</button>
+                    </div>
+                </div>
+
+                <div class="onboarding-step" data-step="3">
+                    <h2>Upload Business Documents</h2>
+                    <p>Let AI learn directly from your business data</p>
+                    
+                    <div class="upload-zone" id="onboardingUploadZone" style="border: 2px dashed var(--border-color); padding: 40px; border-radius: 8px; text-align: center; margin: 20px 0; background: rgba(0,0,0,0.2);">
+                        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 48px; height: 48px; margin: 0 auto var(--spacing-sm) auto; color: var(--primary-accent);">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <h3>Drag and drop your business files here</h3>
+                        <p style="color: var(--text-secondary); font-size: 13px; margin: 6px 0 20px 0;">PDF, DOCX, TXT (Max 50MB each)</p>
+                        <button type="button" class="btn btn-secondary" id="onbBrowseBtn">Browse Files</button>
+                        <input type="file" id="onbFileInput" style="display: none;" multiple accept=".pdf,.docx,.txt">
+                    </div>
+
+                    <p class="upload-note" style="color: var(--text-tertiary); font-size: 12px; margin-bottom: var(--spacing-md);">You can upload more documents anytime directly inside Knowledge Base settings.</p>
+
+                    <div class="button-group" style="display: flex; gap: var(--spacing-sm);">
+                        <button class="btn btn-secondary btn-block onboarding-prev" onclick="switchStep(2)">Back</button>
+                        <button class="btn btn-primary btn-block" id="btnSubmitOnboarding">Complete Setup & Activate Engine</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/onboarding.js"></script>
+</body>
+</html>

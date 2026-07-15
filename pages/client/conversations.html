@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversations - BharatVoice</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <script src="../../js/noDirectFlow.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <div class="dashboard-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="../../index.html" class="sidebar-logo">
+                    <span class="logo-text">BharatVoice</span>
+                </a>
+                <button class="sidebar-close" id="sidebarClose">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="sidebar-link">
+                    <span class="sidebar-icon">📊</span>
+                    Dashboard
+                </a>
+                <a href="knowledge-base.html" class="sidebar-link">
+                    <span class="sidebar-icon">📚</span>
+                    Knowledge Base
+                </a>
+                <a href="whatsapp.html" class="sidebar-link">
+                    <span class="sidebar-icon">💬</span>
+                    WhatsApp
+                </a>
+                <a href="conversations.html" class="sidebar-link active">
+                    <span class="sidebar-icon">💭</span>
+                    Conversations
+                </a>
+                <a href="analytics.html" class="sidebar-link">
+                    <span class="sidebar-icon">📈</span>
+                    Analytics
+                </a>
+                <a href="subscription.html" class="sidebar-link">
+                    <span class="sidebar-icon">💳</span>
+                    Subscription
+                </a>
+                <a href="settings.html" class="sidebar-link">
+                    <span class="sidebar-icon">⚙️</span>
+                    Settings
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn btn-secondary btn-block" onclick="handleLogout()">Logout</button>
+            </div>
+        </aside>
+
+        <main class="dashboard-main">
+            <div class="dashboard-header">
+                <button class="hamburger-toggle" id="hamburgerToggle">☰</button>
+                <div class="header-search">
+                    <input type="text" class="search-input" placeholder="Search conversations..." id="convSearchInput">
+                    <button class="btn btn-primary btn-small" id="convSearchBtn" style="margin-left: 8px;">Search</button>
+                </div>
+                <div class="header-actions">
+                    <div class="profile-menu">
+                        <button class="profile-btn">
+                            <div class="avatar" id="convAvatar">U</div>
+                        </button>
+                        <div class="profile-dropdown">
+                            <a href="settings.html">Settings</a>
+                            <a href="#" onclick="handleLogout(); return false;">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding: var(--spacing-lg);">
+                <h1 style="margin-bottom: var(--spacing-md);">Customer Conversations</h1>
+                <p style="color: var(--text-secondary); margin-bottom: var(--spacing-xl);">Chronological messaging activity ledger</p>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-label">Total Logs</span>
+                        </div>
+                        <div class="metric-value" id="convTotal">0</div>
+                        <div class="metric-subtext">Captured interactions</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-label">Unique Customers</span>
+                        </div>
+                        <div class="metric-value" id="convUniqueCustomers">0</div>
+                        <div class="metric-subtext">Unique phone addresses</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-label">Avg Response Time</span>
+                        </div>
+                        <div class="metric-value" id="convAvgResponse">0 ms</div>
+                        <div class="metric-subtext">System compute speed</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-label">Today Activity</span>
+                        </div>
+                        <div class="metric-value" id="convToday">0</div>
+                        <div class="metric-subtext">Conversations logged today</div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top: var(--spacing-xl);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg);">
+                        <h3>Activity Ledger</h3>
+                        <div>
+                            <select id="dateFilterSelect" class="input-struct" style="padding: 6px 12px; background: var(--bg-card);">
+                                <option value="all">All History</option>
+                                <option value="today">Today</option>
+                                <option value="week">Past 7 Days</option>
+                                <option value="month">Past 30 Days</option>
+                            </select>
+                            <button class="btn btn-secondary btn-small" id="exportCsvBtn" style="margin-left: 8px;">📥 Export CSV</button>
+                        </div>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table data-table="conversations">
+                            <thead>
+                                <tr>
+                                    <th>Timestamp</th>
+                                    <th>Customer Phone</th>
+                                    <th>Incoming Message</th>
+                                    <th>AI Response</th>
+                                    <th>Type</th>
+                                    <th>Response Time</th>
+                                </tr>
+                            </thead>
+                            <tbody id="conversationTableBody">
+                                <tr>
+                                    <td colspan="6" style="text-align: center; color: var(--text-tertiary);">Compiling communication logs...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--spacing-md);">
+                        <span style="color: var(--text-secondary); font-size: 13px;" id="paginationInfo">Page 1 of 1</span>
+                        <div id="paginationControls">
+                            <button class="btn btn-secondary btn-small" id="prevPageBtn" disabled>← Previous</button>
+                            <button class="btn btn-secondary btn-small" id="nextPageBtn" disabled style="margin-left: 6px;">Next →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/conversations.js"></script>
+</body>
+</html>

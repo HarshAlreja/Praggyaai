@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - BharatVoice</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .contact-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .contact-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 15px;
+        }
+        
+        .contact-header p {
+            font-size: 1.1rem;
+            color: #A1A1AA;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 60px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .info-item {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #E53935 0%, #FF6B6B 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.5rem;
+        }
+        
+        .info-text h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #FFFFFF;
+            margin-bottom: 8px;
+        }
+        
+        .info-text p {
+            color: #A1A1AA;
+            line-height: 1.6;
+        }
+        
+        .info-text a {
+            color: #E53935;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .info-text a:hover {
+            color: #FF6B6B;
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #FFFFFF;
+            margin-bottom: 8px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            padding: 12px 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background-color: #111827;
+            color: #FFFFFF;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #E53935;
+            box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.1);
+            background-color: #161F36;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        .submit-btn {
+            padding: 14px 32px;
+            background: linear-gradient(135deg, #E53935 0%, #FF6B6B 100%);
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(229, 57, 53, 0.3);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        .success-message {
+            display: none;
+            padding: 15px;
+            background-color: #22C55E;
+            color: #FFFFFF;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .error-message {
+            display: none;
+            padding: 15px;
+            background-color: #EF4444;
+            color: #FFFFFF;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background-color: #111827;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #A1A1AA;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+        
+        .social-btn:hover {
+            background: linear-gradient(135deg, #E53935 0%, #FF6B6B 100%);
+            color: #FFFFFF;
+            border-color: transparent;
+        }
+        
+        .nav-link {
+            display: inline-block;
+            margin-top: 40px;
+            color: #E53935;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: #FF6B6B;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .contact-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body style="background-color: #0B1020; color: #A1A1AA;">
+    <div class="contact-container">
+        <div class="contact-header">
+            <h1>Get in Touch</h1>
+            <p>Have questions about BharatVoice? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+        </div>
+        
+        <div class="contact-content">
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <div class="info-item">
+                    <div class="info-icon">📧</div>
+                    <div class="info-text">
+                        <h3>Email</h3>
+                        <p><a href="mailto:hello@bharatvoice.com">hello@bharatvoice.com</a></p>
+                        <p style="font-size: 0.9rem;">We typically respond within 24 hours</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">📱</div>
+                    <div class="info-text">
+                        <h3>Phone</h3>
+                        <p><a href="tel:+919876543210">+91 (XXX) XXX-XXXX</a></p>
+                        <p style="font-size: 0.9rem;">Monday to Friday, 9 AM - 6 PM IST</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">📍</div>
+                    <div class="info-text">
+                        <h3>Location</h3>
+                        <p>Mumbai, Maharashtra<br>India</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">💼</div>
+                    <div class="info-text">
+                        <h3>Business Hours</h3>
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday - Sunday: Closed<br>EST: India Standard Time (IST)</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 style="color: #FFFFFF; margin-bottom: 15px;">Follow Us</h3>
+                    <div class="social-links">
+                        <a href="https://twitter.com/bharatvoice" class="social-btn" title="Twitter">𝕏</a>
+                        <a href="https://linkedin.com/company/bharatvoice" class="social-btn" title="LinkedIn">in</a>
+                        <a href="https://github.com/bharatvoice" class="social-btn" title="GitHub">⚙️</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <form class="contact-form" id="contactForm">
+                <div class="success-message" id="successMessage">
+                    ✓ Thank you! We've received your message. We'll get back to you soon.
+                </div>
+                <div class="error-message" id="errorMessage">
+                    ✗ Something went wrong. Please try again.
+                </div>
+                
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        placeholder="Your name" 
+                        required
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="your@email.com" 
+                        required
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        placeholder="+91 (XXX) XXX-XXXX"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject *</label>
+                    <input 
+                        type="text" 
+                        id="subject" 
+                        name="subject" 
+                        placeholder="What is this about?" 
+                        required
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea 
+                        id="message" 
+                        name="message" 
+                        placeholder="Tell us more about your inquiry..." 
+                        required
+                    ></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="inquiry-type">Inquiry Type</label>
+                    <select id="inquiry-type" name="inquiry-type" style="padding: 12px 16px; border: 1px solid rgba(255,255,255,0.08); background-color: #111827; color: #FFFFFF; border-radius: 8px; font-size: 0.95rem;">
+                        <option value="">Select an option</option>
+                        <option value="sales">Sales Inquiry</option>
+                        <option value="support">Technical Support</option>
+                        <option value="partnership">Partnership</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+        
+        <!-- FAQ Section -->
+        <div style="margin-top: 80px; padding-top: 60px; border-top: 1px solid rgba(255,255,255,0.08);">
+            <h2 style="font-size: 1.8rem; color: #FFFFFF; margin-bottom: 40px;">Frequently Asked Questions</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                <div style="background: #111827; padding: 25px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
+                    <h3 style="color: #FFFFFF; margin-bottom: 10px;">How long does setup take?</h3>
+                    <p style="color: #A1A1AA; line-height: 1.6;">Most businesses are set up and running within 30 minutes. You can start uploading documents and connecting WhatsApp immediately after signup.</p>
+                </div>
+                
+                <div style="background: #111827; padding: 25px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
+                    <h3 style="color: #FFFFFF; margin-bottom: 10px;">Do you offer free trial?</h3>
+                    <p style="color: #A1A1AA; line-height: 1.6;">Yes! You can start with our free tier to explore features. Upgrade anytime as your business grows.</p>
+                </div>
+                
+                <div style="background: #111827; padding: 25px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
+                    <h3 style="color: #FFFFFF; margin-bottom: 10px;">Is my data secure?</h3>
+                    <p style="color: #A1A1AA; line-height: 1.6;">Absolutely. We use enterprise-grade encryption, regular security audits, and comply with international data protection standards.</p>
+                </div>
+                
+                <div style="background: #111827; padding: 25px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
+                    <h3 style="color: #FFFFFF; margin-bottom: 10px;">What languages do you support?</h3>
+                    <p style="color: #A1A1AA; line-height: 1.6;">We support English, Hindi, and Hinglish. More languages coming soon!</p>
+                </div>
+                
+                <div style="background: #111827; padding: 25px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
+                    <h3 style="color: #FFFFFF; margin-bottom: 10px;">Can I cancel anytime?</h3>
+                    <p style="color: #A1A1AA; line-height: 1.6;">Yes, you can cancel your subscription anytime with no penalties. Your data remains accessible for 30 days.</p>
+                </div>
+                
+                <div style="background: #111827; padding: 25px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
+                    <h3 style="color: #FFFFFF; margin-bottom: 10px;">Do you provide customer support?</h3>
+                    <p style="color: #A1A1AA; line-height: 1.6;">Yes! We offer email support for all plans and priority support for paid tiers.</p>
+                </div>
+            </div>
+        </div>
+        
+        <a href="/" class="nav-link">← Back to Home</a>
+    </div>
+    
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const submitBtn = document.querySelector('.submit-btn');
+            
+            // Hide messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value,
+                inquiryType: document.getElementById('inquiry-type').value
+            };
+            
+            // In production, send to backend
+            try {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+                
+                // Simulate API call (replace with actual endpoint)
+                // const response = await fetch('/api/contact', {
+                //     method: 'POST',
+                //     headers: { 'Content-Type': 'application/json' },
+                //     body: JSON.stringify(formData)
+                // });
+                
+                // For now, show success
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                // Show success message
+                successMessage.style.display = 'block';
+                
+                // Reset form
+                document.getElementById('contactForm').reset();
+                
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
+                
+            } catch (error) {
+                errorMessage.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+                
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 5000);
+            }
+        });
+    </script>
+</body>
+</html>

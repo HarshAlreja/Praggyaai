@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revenue - Admin - BharatVoice</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/admin.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <script src="../../js/admin-guard.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <div class="dashboard-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="../../index.html" class="sidebar-logo">
+                    <span class="logo-text">BharatVoice</span>
+                    <span style="font-size: 11px; color: var(--text-secondary);">Master</span>
+                </a>
+                <button class="sidebar-close" id="sidebarClose">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="admin-dashboard.html" class="sidebar-link"><span class="sidebar-icon">📊</span>Overview</a>
+                <a href="admin-businesses.html" class="sidebar-link"><span class="sidebar-icon">🏢</span>Businesses</a>
+                <a href="admin-revenue.html" class="sidebar-link active"><span class="sidebar-icon">💰</span>Revenue</a>
+                <a href="admin-analytics.html" class="sidebar-link"><span class="sidebar-icon">📈</span>Analytics</a>
+                <a href="admin-support.html" class="sidebar-link"><span class="sidebar-icon">🆘</span>Support</a>
+                <a href="admin-settings.html" class="sidebar-link"><span class="sidebar-icon">⚙️</span>Settings</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn btn-secondary btn-block" onclick="handleLogout()">Logout</button>
+            </div>
+        </aside>
+
+        <main class="dashboard-main">
+            <div class="dashboard-header">
+                <button class="hamburger-toggle" id="hamburgerToggle">☰</button>
+                <div class="header-search">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </div>
+                <div class="header-actions">
+                    <div class="profile-menu">
+                        <button class="profile-btn">
+                            <div class="avatar" style="background: linear-gradient(135deg, #7C5CFC 0%, #5EEAD4 100%); font-weight: bold;">SA</div>
+                        </button>
+                        <div class="profile-dropdown">
+                            <a href="admin-settings.html">Settings</a>
+                            <a href="#" onclick="handleLogout()">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding: var(--spacing-lg);">
+                <h1 style="margin-bottom: var(--spacing-md);">Revenue Analytics</h1>
+                <p style="color: var(--text-secondary); margin-bottom: var(--spacing-xl);">Track platform revenue and growth metrics</p>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Monthly Recurring Revenue (MRR)</div>
+                        <div class="metric-value" id="admMRR">Loading...</div>
+                        <div class="metric-trend up">↑ Growth tracking</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Annual Revenue (ARR)</div>
+                        <div class="metric-value" id="admARR">Loading...</div>
+                        <div class="metric-trend up">↑ Annual projection</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Active Subscriptions</div>
+                        <div class="metric-value" id="admSubs">Loading...</div>
+                        <div class="metric-subtext">Paying tenant businesses</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Average Revenue / Customer</div>
+                        <div class="metric-value" id="admARPU">Loading...</div>
+                        <div class="metric-subtext">Annualized</div>
+                    </div>
+                </div>
+
+                <div class="charts-section" style="margin-top: var(--spacing-xl);">
+                    <div class="chart-card">
+                        <h3>Revenue Growth Trajectory</h3>
+                        <div class="chart-placeholder" id="admChartTrend" style="color:#fff;">Calculating growth metrics...</div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Revenue by Plan Distribution</h3>
+                        <div class="chart-placeholder" id="admChartPlan" style="color:#fff;">Analyzing plan tiers...</div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Platform Churn Rate</h3>
+                        <div class="chart-placeholder" id="admChartChurn" style="color:#5EEAD4;">Calculating churn metrics...</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/admin-revenue.js"></script>
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BharatVoice - Business AI Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <a href="#" class="logo">
+                    <span class="logo-text">BharatVoice</span>
+                    <span class="logo-subtitle">Business AI</span>
+                </a>
+            </div>
+            
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <div class="navbar-menu" id="navbarMenu">
+                <div class="nav-links">
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#how-it-works" class="nav-link">How It Works</a>
+                    <a href="#pricing" class="nav-link">Pricing</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+                
+                <div class="navbar-actions">
+                    <a href="pages/login.html" class="btn btn-secondary">Login</a>
+                    <a href="pages/signup.html" class="btn btn-primary">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">AI Customer Assistant for Indian Businesses</h1>
+                <p class="hero-subtitle">Turn your business documents into an intelligent WhatsApp assistant that responds to customer queries automatically. Scale customer support without hiring.</p>
+                
+                <div class="hero-buttons">
+                    <a href="pages/signup.html" class="btn btn-primary btn-large">Start Free Trial</a>
+                    <a href="#demo" class="btn btn-secondary btn-large">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                        Watch Demo
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-illustration">
+                <div class="placeholder-image">
+                    <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <defs>
+                            <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#7C5CFC;stop-opacity:0.1" />
+                                <stop offset="100%" style="stop-color:#5EEAD4;stop-opacity:0.05" />
+                            </linearGradient>
+                        </defs>
+                        <rect width="500" height="400" fill="url(#bg-gradient)"/>
+                        
+                        <!-- Dashboard Preview -->
+                        <rect x="50" y="40" width="400" height="300" rx="16" fill="#161F36" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                        <rect x="50" y="40" width="400" height="50" rx="16" fill="#1a2847" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                        
+                        <!-- Header -->
+                        <circle cx="80" cy="65" r="8" fill="#7C5CFC"/>
+                        <rect x="100" y="60" width="100" height="10" rx="5" fill="rgba(255,255,255,0.3)"/>
+                        <rect x="320" y="60" width="100" height="10" rx="5" fill="rgba(255,255,255,0.2)"/>
+                        
+                        <!-- Content Boxes -->
+                        <rect x="70" y="110" width="170" height="80" rx="8" fill="#1a2847" stroke="rgba(124,92,252,0.3)" stroke-width="1"/>
+                        <rect x="260" y="110" width="170" height="80" rx="8" fill="#1a2847" stroke="rgba(94,234,212,0.3)" stroke-width="1"/>
+                        
+                        <text x="155" y="135" font-family="Inter, sans-serif" font-size="12" fill="#A1A1AA">Documents</text>
+                        <text x="155" y="175" font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#7C5CFC">1,250</text>
+                        
+                        <text x="345" y="135" font-family="Inter, sans-serif" font-size="12" fill="#A1A1AA">AI Responses</text>
+                        <text x="345" y="175" font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#5EEAD4">3,842</text>
+                        
+                        <!-- Bottom Boxes -->
+                        <rect x="70" y="210" width="170" height="80" rx="8" fill="#1a2847" stroke="rgba(56,189,248,0.3)" stroke-width="1"/>
+                        <rect x="260" y="210" width="170" height="80" rx="8" fill="#1a2847" stroke="rgba(34,197,94,0.3)" stroke-width="1"/>
+                        
+                        <text x="155" y="235" font-family="Inter, sans-serif" font-size="12" fill="#A1A1AA">WhatsApp Status</text>
+                        <text x="155" y="260" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#38BDF8">Connected</text>
+                        <circle cx="155" cy="275" r="4" fill="#22C55E"/>
+                        <text x="165" y="279" font-family="Inter, sans-serif" font-size="11" fill="#A1A1AA">Active</text>
+                        
+                        <text x="345" y="235" font-family="Inter, sans-serif" font-size="12" fill="#A1A1AA">Sync Status</text>
+                        <text x="345" y="275" font-family="Inter, sans-serif" font-size="11" fill="#A1A1AA">Last sync: 2 min ago</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Animated Background Elements -->
+        <div class="hero-bg-elements">
+            <div class="bg-element bg-element-1"></div>
+            <div class="bg-element bg-element-2"></div>
+            <div class="bg-element bg-element-3"></div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="features-container">
+            <div class="section-header">
+                <h2 class="section-title">Powerful Features</h2>
+                <p class="section-subtitle">Everything you need to automate customer support</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 6v6l4 2"></path>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Multilingual AI</h3>
+                    <p class="feature-description">Supports Hindi, English, and Hinglish conversations. Understand and respond in your customers' language.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">RAG Powered</h3>
+                    <p class="feature-description">Retrieval Augmented Generation from your business documents. Accurate answers directly from your knowledge base.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">WhatsApp Integration</h3>
+                    <p class="feature-description">Customers interact directly on WhatsApp. No separate app needed. They already know how to use WhatsApp.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M23 4v6h-6"></path>
+                            <path d="M1 20v-6h6"></path>
+                            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Voice Support</h3>
+                    <p class="feature-description">Supports voice notes and audio messages. Perfect for customers who prefer speaking instead of typing.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                            <polyline points="13 2 13 9 20 9"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Knowledge Base</h3>
+                    <p class="feature-description">Upload PDF, DOCX, TXT files. AI learns from your business data and becomes smarter over time.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="23 6 13.5 15.5 8 9.5 1 16"></polyline>
+                            <polyline points="17 6 23 6 23 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Fast Responses</h3>
+                    <p class="feature-description">Powered by advanced AI infrastructure. Respond to customer queries in under 2 seconds.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Enterprise Security</h3>
+                    <p class="feature-description">End-to-end encryption. Your customer data is secure. GDPR and data protection compliant.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Multi-Tenant SaaS</h3>
+                    <p class="feature-description">Manage multiple businesses from one account. Each business has isolated data and settings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="how-it-works-container">
+            <div class="section-header">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Get started in 4 simple steps</p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Create Account</h3>
+                    <p class="step-description">Sign up and verify your email in 2 minutes</p>
+                </div>
+
+                <div class="step-divider"></div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Connect WhatsApp</h3>
+                    <p class="step-description">Link your WhatsApp Business number</p>
+                </div>
+
+                <div class="step-divider"></div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Upload Documents</h3>
+                    <p class="step-description">Upload your business PDFs and documents</p>
+                </div>
+
+                <div class="step-divider"></div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Go Live</h3>
+                    <p class="step-description">AI starts responding to customer queries</p>
+                </div>
+            </div>
+
+            <div class="workflow-diagram">
+                <div class="workflow-box">
+                    <div class="workflow-icon">👤</div>
+                    <p>Customer Message</p>
+                </div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-box">
+                    <div class="workflow-icon">🔄</div>
+                    <p>Meta WhatsApp API</p>
+                </div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-box">
+                    <div class="workflow-icon">🧠</div>
+                    <p>BharatVoice AI</p>
+                </div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-box">
+                    <div class="workflow-icon">📚</div>
+                    <p>Knowledge Base</p>
+                </div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-box">
+                    <div class="workflow-icon">✅</div>
+                    <p>AI Response</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Preview -->
+    <section id="pricing" class="pricing-preview">
+        <div class="pricing-container">
+            <div class="section-header">
+                <h2 class="section-title">Simple, Transparent Pricing</h2>
+                <p class="section-subtitle">Pay only for what you use. No hidden fees.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price">₹2,499<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>✓ 1,000 AI Responses</li>
+                        <li>✓ 1 WhatsApp Number</li>
+                        <li>✓ 10 Documents</li>
+                        <li>✓ Email Support</li>
+                    </ul>
+                    <a href="pages/signup.html" class="btn btn-secondary">Get Started</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <span class="badge">Most Popular</span>
+                    <h3>Growth</h3>
+                    <div class="price">₹9,999<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>✓ Unlimited Responses</li>
+                        <li>✓ 5 WhatsApp Numbers</li>
+                        <li>✓ 100 Documents</li>
+                        <li>✓ 24/7 Support</li>
+                        <li>✓ Advanced Analytics</li>
+                    </ul>
+                    <a href="pages/signup.html" class="btn btn-primary">Start Free Trial</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">Custom</div>
+                    <ul class="pricing-features">
+                        <li>✓ Custom AI Training</li>
+                        <li>✓ Unlimited Everything</li>
+                        <li>✓ Dedicated Support</li>
+                        <li>✓ Custom Integrations</li>
+                        <li>✓ SLA Guarantee</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2 class="cta-title">Ready to automate your customer support?</h2>
+            <p class="cta-subtitle">Join businesses across India using BharatVoice</p>
+            <div class="cta-buttons">
+                <a href="pages/signup.html" class="btn btn-primary btn-large">Start Free Trial</a>
+                <a href="#contact" class="btn btn-secondary btn-large">Schedule Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>BharatVoice</h4>
+                    <p>Business AI Platform for Indian Companies</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#privacy">Privacy</a></li>
+                        <li><a href="#terms">Terms</a></li>
+                        <li><a href="#security">Security</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Follow</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter">𝕏</a>
+                        <a href="#" aria-label="LinkedIn">in</a>
+                        <a href="#" aria-label="GitHub">⚙</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 BharatVoice. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

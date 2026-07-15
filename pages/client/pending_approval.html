@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Account Pending Verification - BharatVoice</title>
+    <link rel="stylesheet" href="../../css/style.css"/>
+    <link rel="stylesheet" href="../../css/responsive.css"/>
+    <link rel="stylesheet" href="../../css/pending_approval.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body class="dark-theme pending-body">
+
+    <div class="pending-container">
+        <div class="status-icon-wrapper">
+            <span>⏳</span>
+        </div>
+
+        <h1 class="pending-title">Account Verification in Progress</h1>
+        <p class="pending-subtitle">
+            Your account is pending approval. BharatVoice support team will activate your account within 2 hours.
+        </p>
+
+        <div class="info-card-box">
+            <div class="info-row">
+                <span class="info-label">Business Name</span>
+                <span class="info-value" id="boxBusinessName">Loading...</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Registered Email</span>
+                <span class="info-value" id="boxEmailAddress">Loading...</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Account Status</span>
+                <span class="info-value status-alert">
+                    <span class="dot-blink"></span> <span id="statusText">Pending Admin Approval</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="pending-actions">
+            <button class="btn-refresh" id="btnCheckStatus">
+                🔄 Check Approval Status
+            </button>
+            <button class="btn-logout-secondary" id="btnPendingLogout">
+                Log Out
+            </button>
+        </div>
+
+        <p class="support-text support-footer-text">
+            Need urgent approval? <a href="../../contact.html">Contact Support</a>
+        </p>
+    </div>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/pending-approval.js"></script>
+</body>
+</html>

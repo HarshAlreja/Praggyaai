@@ -1,0 +1,209 @@
+/* Custom Styles for BharatVoice Pending Approval Firewall Screen */
+
+:root {
+    --pending-accent: #F59E0B; /* Amber/Warning Color for Pending State */
+    --pulse-glow: rgba(245, 158, 11, 0.15);
+}
+
+.pending-body {
+    background-color: var(--primary-bg, #080D1A);
+    font-family: var(--font-family, 'Inter', sans-serif);
+    color: var(--text-primary, #FFFFFF);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: var(--spacing-xl, 24px);
+    box-sizing: border-box;
+}
+
+.pending-container {
+    max-width: 540px;
+    width: 100%;
+    background-color: var(--secondary-bg, #101828);
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+    border-radius: 16px;
+    padding: 40px 32px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.pending-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--pending-accent), var(--primary-accent, #7C5CFC));
+}
+
+/* Status Icon & Pulse Animation */
+.status-icon-wrapper {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 28px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(245, 158, 11, 0.1);
+    border: 2px solid var(--pending-accent);
+    border-radius: 50%;
+    color: var(--pending-accent);
+    font-size: 32px;
+    animation: pulseGlow 2s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 0 0 var(--pulse-glow);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 0 12px rgba(245, 158, 11, 0);
+        transform: scale(1.03);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+        transform: scale(1);
+    }
+}
+
+.pending-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text-primary, #FFFFFF);
+    letter-spacing: -0.5px;
+}
+
+.pending-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary, #A1A1AA);
+    line-height: 1.6;
+    margin-bottom: 32px;
+}
+
+/* Info Box Design */
+.info-card-box {
+    background-color: var(--card-bg, #161F36);
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 32px;
+    text-align: left;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-size: 13px;
+    color: var(--text-secondary, #A1A1AA);
+}
+
+.info-value {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.info-value.status-alert {
+    color: var(--pending-accent);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dot-blink {
+    width: 8px;
+    height: 8px;
+    background-color: var(--pending-accent);
+    border-radius: 50%;
+    display: inline-block;
+    animation: blinker 1.5s infinite linear;
+}
+
+@keyframes blinker {
+    50% { opacity: 0.3; }
+}
+
+/* Action Utility Triggers */
+.pending-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-refresh {
+    background: linear-gradient(135deg, var(--primary-accent, #7C5CFC) 0%, #6343e3 100%);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(124, 92, 252, 0.2);
+}
+
+.btn-refresh:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(124, 92, 252, 0.3);
+}
+
+.btn-logout-secondary {
+    background: transparent;
+    color: var(--text-secondary, #A1A1AA);
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-logout-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+    color: var(--text-primary, #FFFFFF);
+}
+
+.support-footer-text {
+    margin-top: 28px;
+    font-size: 13px;
+    color: var(--text-tertiary, #71717A);
+}
+
+.support-footer-text a {
+    color: var(--secondary-accent, #5EEAD4);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.support-footer-text a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Overrides */
+@media (max-width: 480px) {
+    .pending-container {
+        padding: 28px 20px;
+    }
+    .pending-title {
+        font-size: 20px;
+    }
+}

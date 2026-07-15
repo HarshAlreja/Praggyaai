@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - BharatVoice</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <div class="dashboard-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="../../index.html" class="sidebar-logo">
+                    <span class="logo-text">BharatVoice</span>
+                    <span style="font-size: 11px; color: var(--text-secondary);">Client</span>
+                </a>
+                <button class="sidebar-close" id="sidebarClose">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="sidebar-link active">
+                    <span class="sidebar-icon">📊</span>
+                    Overview
+                </a>
+                <a href="knowledge-base.html" class="sidebar-link">
+                    <span class="sidebar-icon">📚</span>
+                    Knowledge Base
+                </a>
+                <a href="conversations.html" class="sidebar-link">
+                    <span class="sidebar-icon">💬</span>
+                    Conversations
+                </a>
+                <a href="settings.html" class="sidebar-link">
+                    <span class="sidebar-icon">⚙️</span>
+                    Settings
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn btn-secondary btn-block" id="clientLogoutBtn">Logout</button>
+            </div>
+        </aside>
+
+        <main class="dashboard-main">
+            <div class="dashboard-header">
+                <button class="hamburger-toggle" id="hamburgerToggle">☰</button>
+                <div class="header-search">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </div>
+                <div class="header-actions">
+                    <div class="profile-menu">
+                        <button class="profile-btn">
+                            <div class="avatar" style="background: linear-gradient(135deg, #7C5CFC 0%, #5EEAD4 100%); font-weight: bold;" id="profileInitial">U</div>
+                        </button>
+                        <div class="profile-dropdown">
+                            <a href="settings.html">Settings</a>
+                            <a href="#" onclick="handleLogout(); return false;">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding: var(--spacing-lg);">
+                <h1 style="margin-bottom: var(--spacing-md);">Welcome to BharatVoice</h1>
+                <p style="color: var(--text-secondary); margin-bottom: var(--spacing-xl);">Your AI-powered customer assistant dashboard</p>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-label">Total Conversations</span>
+                        </div>
+                        <div class="metric-value" id="totalConversations">0</div>
+                        <div class="metric-subtext">Last 30 days</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-label">Documents Uploaded</span>
+                        </div>
+                        <div class="metric-value" id="totalDocuments">0</div>
+                        <div class="metric-subtext">Knowledge base files</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-label">WhatsApp Status</span>
+                        </div>
+                        <div class="metric-value" style="color: var(--warning);" id="whatsappStatus">Checking...</div>
+                        <div class="metric-subtext">Connection status</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-label">Tokens Used</span>
+                        </div>
+                        <div class="metric-value" id="tokensUsed">0</div>
+                        <div class="metric-subtext">This month</div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top: var(--spacing-xl);">
+                    <h3>Quick Actions</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--spacing-md); margin-top: var(--spacing-md);">
+                        <a href="knowledge-base.html" class="btn btn-primary">📄 Upload Document</a>
+                        <a href="conversations.html" class="btn btn-primary">💬 View Conversations</a>
+                        <a href="settings.html" class="btn btn-primary">⚙️ Configure WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/main.js?v=20260701"></script>
+    <script src="../../js/dashboard.js?v=20260701"></script>
+    <script src="../../js/dashboard-page.js?v=20260701"></script>
+</body>
+</html>

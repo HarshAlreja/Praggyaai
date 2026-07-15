@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Master Admin Secure Access - BharatVoice</title>
+    <link rel="stylesheet" href="../../css/admin-login.css"/>
+    <link rel="stylesheet" href="../../css/responsive.css"/>
+    <link rel="stylesheet" href="../../css/style.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body class="dark-theme admin-body">
+
+    <div class="admin-login-card">
+        <div class="admin-login-header">
+            <a href="../../index.html" class="admin-brand-logo">
+                BharatVoice<span class="admin-badge-tag">Master</span>
+            </a>
+            <p class="admin-login-subtitle">System Administration Gateway Interface</p>
+        </div>
+
+        <form class="admin-form" id="adminLoginForm">
+            <div class="admin-input-wrapper">
+                <label for="adminEmail" class="admin-input-label">Admin Security Email</label>
+                <input 
+                    type="email" 
+                    id="adminEmail" 
+                    class="admin-field" 
+                    placeholder="admin@bharatvoice.ai" 
+                    required
+                />
+            </div>
+
+            <div class="admin-input-wrapper">
+                <label for="adminPassword" class="admin-input-label">Master Access Key</label>
+                <input 
+                    type="password" 
+                    id="adminPassword" 
+                    class="admin-field" 
+                    placeholder="••••••••" 
+                    required
+                />
+            </div>
+
+            <button type="submit" class="btn-admin-submit" id="btnAdminSubmit">
+                🔒 Verify Credentials & Access Terminal
+            </button>
+        </form>
+
+        <div class="admin-back-gate">
+            <a href="../../pages/login.html" class="admin-back-link">← Return to Standard Client Portal</a>
+        </div>
+    </div>
+
+    <script src="../../js/admin-login.js"></script>
+</body>
+</html>

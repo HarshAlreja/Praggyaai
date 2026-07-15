@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Tickets - Admin - BharatVoice</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/admin.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <script src="../../js/admin-guard.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <div class="dashboard-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="../../index.html" class="sidebar-logo">
+                    <span class="logo-text">BharatVoice</span>
+                    <span style="font-size: 11px; color: var(--text-secondary);">Master</span>
+                </a>
+                <button class="sidebar-close" id="sidebarClose">✕</button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="admin-dashboard.html" class="sidebar-link"><span class="sidebar-icon">📊</span>Overview</a>
+                <a href="admin-businesses.html" class="sidebar-link"><span class="sidebar-icon">🏢</span>Businesses</a>
+                <a href="admin-revenue.html" class="sidebar-link"><span class="sidebar-icon">💰</span>Revenue</a>
+                <a href="admin-analytics.html" class="sidebar-link"><span class="sidebar-icon">📈</span>Analytics</a>
+                <a href="admin-support.html" class="sidebar-link active"><span class="sidebar-icon">🆘</span>Support</a>
+                <a href="admin-settings.html" class="sidebar-link"><span class="sidebar-icon">⚙️</span>Settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn btn-secondary btn-block" onclick="handleLogout()">Logout</button>
+            </div>
+        </aside>
+        <main class="dashboard-main">
+            <div class="dashboard-header">
+                <button class="hamburger-toggle" id="hamburgerToggle">☰</button>
+                <div class="header-search">
+                    <input type="text" class="search-input" placeholder="Search tickets...">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+                </div>
+                <div class="header-actions">
+                    <button class="header-btn notification-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                        <span class="notification-badge" id="admNotifCount">0</span>
+                    </button>
+                    <div class="profile-menu">
+                        <button class="profile-btn"><div class="avatar" style="background: linear-gradient(135deg, #7C5CFC 0%, #5EEAD4 100%); font-weight: bold;">SA</div></button>
+                        <div class="profile-dropdown">
+                            <a href="admin-settings.html">Settings</a>
+                            <a href="#" onclick="handleLogout()">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="padding: var(--spacing-lg);">
+                <h1 style="margin-bottom: var(--spacing-md);">Support Tickets</h1>
+                <p style="color: var(--text-secondary); margin-bottom: var(--spacing-xl);">Manage customer support requests</p>
+                <div class="card">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Ticket ID</th>
+                                    <th>Business</th>
+                                    <th>Subject</th>
+                                    <th>Status</th>
+                                    <th>Priority</th>
+                                    <th>Created</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminTblTicketsBody">
+                                <tr>
+                                    <td colspan="7" style="text-align: center; color: var(--text-tertiary);">Loading tickets...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/admin-support.js"></script>
+</body>
+</html>

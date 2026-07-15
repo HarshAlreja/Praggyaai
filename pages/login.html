@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - BharatVoice</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/auth.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <a href="../index.html" class="auth-logo">
+                    <span class="logo-text">BharatVoice</span>
+                </a>
+            </div>
+
+            <div class="auth-content">
+                <h1 class="auth-title">Welcome back</h1>
+                <p class="auth-subtitle">Sign in to your BharatVoice account</p>
+
+                <form class="auth-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail" class="form-label">Email Address</label>
+                        <input type="email" id="loginEmail" class="form-input" placeholder="you@domain.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loginPassword" class="form-label">Password</label>
+                        <input type="password" id="loginPassword" class="form-input" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="form-actions">
+                        <a href="forgot-password.html" class="auth-link">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block" id="btnLoginSubmit">Sign In</button>
+
+                    <div class="auth-divider">
+                        <span>or continue with</span>
+                    </div>
+
+                    <button type="button" class="btn btn-secondary btn-block" id="googleBtn">
+                        <svg class="icon" viewBox="0 0 24 24" width="20" height="20" style="margin-right: 10px;">
+                            <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                            <path fill="currentColor" d="M12 22c2.72 0 5.01-.9 6.68-2.45l-3.57-2.77c-.99.66-2.26 1.05-3.11 1.05-2.39 0-4.41-1.62-5.12-3.83H3.1v2.85C4.77 20.1 8.05 22 12 22z"/>
+                            <path fill="currentColor" d="M6.88 14.02a5.51 5.51 0 0 1 0-3.04V8.13H3.1A8.97 8.97 0 0 0 1.8 12.5c0 1.45.35 2.82.96 4.04l2.12-2.52z"/>
+                            <path fill="currentColor" d="M12 6.58c1.32 0 2.5.45 3.44 1.35l2.58-2.58C16.89 3.9 14.59 3 12 3 8.05 3 4.77 4.9 3.1 7.83l3.12 2.85c.71-2.21 2.73-3.83 5.12-3.83z"/>
+                        </svg>
+                        Google Authentication
+                    </button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="signup.html" class="auth-link">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="auth-illustration">
+            <div class="illustration-content">
+                <h2>Join 500+ Indian Businesses</h2>
+                <p>Using BharatVoice to automate customer support</p>
+                
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-number">10K+</span>
+                        <span class="stat-label">Customer Queries Daily</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">Accuracy Rate</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50%</span>
+                        <span class="stat-label">Cost Reduction</span>
+                    </div>
+                </div>
+
+                <div class="testimonials">
+                    <div class="testimonial">
+                        <p>"BharatVoice has transformed how we handle customer queries. We now respond instantly."</p>
+                        <span>- Raj Kumar, Medical Store Owner</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/main.js?v=20260701"></script>
+    <script src="../js/login.js"></script>
+</body>
+</html>

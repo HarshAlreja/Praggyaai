@@ -1,0 +1,169 @@
+/* Custom Styles for BharatVoice Master Admin Portal Access Control Gate */
+
+:root {
+    --admin-accent: #7C5CFC;
+    --admin-hover: #6343e3;
+    --admin-dark-red: #EF4444;
+    --admin-glow: rgba(124, 92, 252, 0.15);
+}
+
+.admin-body {
+    background-color: #080D1A;
+    font-family: 'Inter', sans-serif;
+    color: #FFFFFF;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 24px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background grid network mesh simulation effect */
+.admin-body::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+    top: -50%;
+    left: -50%;
+    transform: rotate(15deg);
+    pointer-events: none;
+}
+
+.admin-login-card {
+    max-width: 440px;
+    width: 100%;
+    background-color: #101828;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 48px 40px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 10;
+}
+
+.admin-login-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--admin-dark-red), var(--admin-accent));
+}
+
+.admin-login-header {
+    text-align: center;
+    margin-bottom: 36px;
+}
+
+.admin-brand-logo {
+    font-size: 26px;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.admin-badge-tag {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--admin-dark-red);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-left: 6px;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    vertical-align: middle;
+}
+
+.admin-login-subtitle {
+    font-size: 14px;
+    color: #A1A1AA;
+    margin: 0;
+}
+
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.admin-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.admin-input-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #FFFFFF;
+}
+
+.admin-field {
+    padding: 14px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: #161F36;
+    color: #FFFFFF;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.2s ease;
+}
+
+.admin-field:focus {
+    outline: none;
+    border-color: var(--admin-accent);
+    box-shadow: 0 0 0 3px var(--admin-glow);
+    background-color: #1c2846;
+}
+
+.btn-admin-submit {
+    background: linear-gradient(135deg, var(--admin-accent) 0%, var(--admin-hover) 100%);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 10px;
+    box-shadow: 0 4px 12px rgba(124, 92, 252, 0.2);
+}
+
+.btn-admin-submit:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(124, 92, 252, 0.3);
+}
+
+.btn-admin-submit:active {
+    transform: translateY(0);
+}
+
+.admin-back-gate {
+    text-align: center;
+    margin-top: 24px;
+}
+
+.admin-back-link {
+    font-size: 13px;
+    color: #A1A1AA;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.admin-back-link:hover {
+    color: #FFFFFF;
+}

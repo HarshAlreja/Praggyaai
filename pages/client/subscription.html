@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription - BharatVoice</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="../../index.html" class="sidebar-logo">
+                    <span class="logo-text">BharatVoice</span>
+                </a>
+                <button class="sidebar-close" id="sidebarClose">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="sidebar-link">
+                    <span class="sidebar-icon">📊</span>
+                    Dashboard
+                </a>
+                <a href="knowledge-base.html" class="sidebar-link">
+                    <span class="sidebar-icon">📚</span>
+                    Knowledge Base
+                </a>
+                <a href="whatsapp.html" class="sidebar-link">
+                    <span class="sidebar-icon">💬</span>
+                    WhatsApp
+                </a>
+                <a href="conversations.html" class="sidebar-link">
+                    <span class="sidebar-icon">💭</span>
+                    Conversations
+                </a>
+                <a href="analytics.html" class="sidebar-link">
+                    <span class="sidebar-icon">📈</span>
+                    Analytics
+                </a>
+                <a href="subscription.html" class="sidebar-link active">
+                    <span class="sidebar-icon">💳</span>
+                    Subscription
+                </a>
+                <a href="settings.html" class="sidebar-link">
+                    <span class="sidebar-icon">⚙️</span>
+                    Settings
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn btn-secondary btn-block" onclick="location.href='../../pages/login.html'">Logout</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-header">
+                <button class="hamburger-toggle" id="hamburgerToggle">☰</button>
+                <div class="header-search">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </div>
+                <div class="header-actions">
+                    <button class="header-btn notification-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                    </button>
+                    <div class="profile-menu">
+                        <button class="profile-btn">
+                            <div class="avatar">RK</div>
+                        </button>
+                        <div class="profile-dropdown">
+                            <a href="settings.html">Settings</a>
+                            <a href="../../pages/login.html">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div style="padding: var(--spacing-lg);">
+                <h1 style="margin-bottom: var(--spacing-md);">Subscription</h1>
+                <p style="color: var(--text-secondary); margin-bottom: var(--spacing-xl);">Manage your plan and billing</p>
+
+                <!-- Current Plan Card -->
+                <div class="card" style="margin-bottom: var(--spacing-xl);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg);">
+                        <div>
+                            <h3>Current Plan: Growth</h3>
+                            <p style="color: var(--text-secondary); font-size: var(--font-size-sm);">Renews on March 15, 2024</p>
+                        </div>
+                        <span class="badge">Active</span>
+                    </div>
+
+                    <div style="background-color: var(--secondary-bg); padding: var(--spacing-lg); border-radius: var(--radius-md); margin-bottom: var(--spacing-lg);">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-lg);">
+                            <div>
+                                <span style="color: var(--text-secondary); font-size: var(--font-size-sm);">Price</span>
+                                <p style="font-size: var(--font-size-xl); font-weight: 600; margin-top: var(--spacing-sm);">₹9,999/month</p>
+                            </div>
+                            <div>
+                                <span style="color: var(--text-secondary); font-size: var(--font-size-sm);">WhatsApp Numbers</span>
+                                <p style="font-size: var(--font-size-xl); font-weight: 600; margin-top: var(--spacing-sm);">5</p>
+                            </div>
+                            <div>
+                                <span style="color: var(--text-secondary); font-size: var(--font-size-sm);">AI Responses</span>
+                                <p style="font-size: var(--font-size-xl); font-weight: 600; margin-top: var(--spacing-sm);">Unlimited</p>
+                            </div>
+                            <div>
+                                <span style="color: var(--text-secondary); font-size: var(--font-size-sm);">Support</span>
+                                <p style="font-size: var(--font-size-xl); font-weight: 600; margin-top: var(--spacing-sm);">24/7</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: var(--spacing-md);">
+                        <button class="btn btn-secondary">Upgrade Plan</button>
+                        <button class="btn btn-secondary">Manage Billing</button>
+                    </div>
+                </div>
+
+                <!-- Plans Comparison -->
+                <h2 style="margin-bottom: var(--spacing-lg);">Available Plans</h2>
+                
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Starter</h3>
+                        <div class="price">₹2,499<span>/month</span></div>
+                        <ul class="pricing-features">
+                            <li>✓ 1,000 AI Responses</li>
+                            <li>✓ 1 WhatsApp Number</li>
+                            <li>✓ 10 Documents</li>
+                            <li>✓ Email Support</li>
+                        </ul>
+                        <button class="btn btn-secondary btn-block">Downgrade</button>
+                    </div>
+
+                    <div class="pricing-card featured">
+                        <span class="badge">Current Plan</span>
+                        <h3>Growth</h3>
+                        <div class="price">₹9,999<span>/month</span></div>
+                        <ul class="pricing-features">
+                            <li>✓ Unlimited Responses</li>
+                            <li>✓ 5 WhatsApp Numbers</li>
+                            <li>✓ 100 Documents</li>
+                            <li>✓ 24/7 Support</li>
+                        </ul>
+                        <button class="btn btn-primary btn-block">Current Plan</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h3>Enterprise</h3>
+                        <div class="price">Custom</div>
+                        <ul class="pricing-features">
+                            <li>✓ Custom AI Training</li>
+                            <li>✓ Unlimited Everything</li>
+                            <li>✓ Dedicated Support</li>
+                            <li>✓ Custom Integrations</li>
+                        </ul>
+                        <button class="btn btn-secondary btn-block">Contact Sales</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - BharatVoice</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/admin.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <script src="../../js/admin-guard.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .ws-status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-left: 6px;
+        }
+        .ws-status-indicator.connected { background: var(--success); }
+        .ws-status-indicator.disconnected { background: var(--danger); }
+        .ws-status-indicator.connecting { background: #f59e0b; }
+    </style>
+</head>
+<body class="dark-theme">
+    <div class="dashboard-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="../../index.html" class="sidebar-logo">
+                    <span class="logo-text">BharatVoice</span>
+                    <span style="font-size: 11px; color: var(--text-secondary);">Master</span>
+                </a>
+                <button class="sidebar-close" id="sidebarClose">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="admin-dashboard.html" class="sidebar-link active">
+                    <span class="sidebar-icon">📊</span>
+                    Overview
+                </a>
+                <a href="admin-businesses.html" class="sidebar-link">
+                    <span class="sidebar-icon">🏢</span>
+                    Businesses
+                </a>
+                <a href="admin-revenue.html" class="sidebar-link">
+                    <span class="sidebar-icon">💰</span>
+                    Revenue
+                </a>
+                <a href="admin-analytics.html" class="sidebar-link">
+                    <span class="sidebar-icon">📈</span>
+                    Analytics
+                </a>
+                <a href="admin-support.html" class="sidebar-link">
+                    <span class="sidebar-icon">🆘</span>
+                    Support
+                </a>
+                <a href="admin-settings.html" class="sidebar-link">
+                    <span class="sidebar-icon">⚙️</span>
+                    Settings
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn btn-secondary btn-block" id="adminLogoutBtn">Logout</button>
+            </div>
+        </aside>
+
+        <main class="dashboard-main">
+            <div class="dashboard-header">
+                <button class="hamburger-toggle" id="hamburgerToggle">☰</button>
+                <div class="header-search">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </div>
+                <div class="header-actions">
+                    <button class="header-btn notification-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                        <span class="notification-badge" id="adminNotifBadge">0</span>
+                    </button>
+                    <div class="profile-menu">
+                        <button class="profile-btn">
+                            <div class="avatar" style="background: linear-gradient(135deg, #7C5CFC 0%, #5EEAD4 100%); font-weight: bold;">SA</div>
+                        </button>
+                        <div class="profile-dropdown">
+                            <a href="admin-settings.html">Settings</a>
+                            <a href="#" id="dropdownAdminLogout">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding: var(--spacing-lg);">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h1 style="margin-bottom: var(--spacing-md);">Master Admin Terminal</h1>
+                        <p style="color: var(--text-secondary); margin-bottom: var(--spacing-xl);">BharatVoice Platform Telemetry Overview</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 10px 16px; border-radius: 20px; font-size: 13px;">
+                        Telemetry Stream: <span id="wsStatusIndicator" class="ws-status-indicator disconnected"></span> <span id="wsStatusText" style="color: var(--text-secondary);">Offline</span>
+                    </div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-label">Total Users in System</span>
+                        </div>
+                        <div class="metric-value" id="adTotalUsers">Loading...</div>
+                        <div class="metric-subtext">Registered identities</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-label">Total Businesses (Tenants)</span>
+                        </div>
+                        <div class="metric-value" id="adTotalBusinesses">Loading...</div>
+                        <div class="metric-subtext">Onboarded database nodes</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-label">Active WhatsApp Nodes</span>
+                        </div>
+                        <div class="metric-value" id="adActiveWhatsapp">Loading...</div>
+                        <div class="metric-subtext">Connected webhook streams</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-label">Total Documents Indexed</span>
+                        </div>
+                        <div class="metric-value" id="adTotalDocs">Loading...</div>
+                        <div class="metric-vector">Vector database files</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-label">Conversations (Last 30 Days)</span>
+                        </div>
+                        <div class="metric-value" id="adRecentConversations">Loading...</div>
+                        <div class="metric-subtext">Total active interactions</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-label">System Health</span>
+                            <span class="status-badge connected">● Operational</span>
+                        </div>
+                        <div class="metric-value" style="font-size: 32px; color: var(--success);">100<span style="font-size: 20px;">%</span></div>
+                        <div class="metric-subtext">Database Node Synchronization</div>
+                    </div>
+                </div>
+
+                <div class="metrics-grid" style="grid-template-columns: 1fr 1fr; margin-top: var(--spacing-xl);">
+                    <div class="metric-card" style="background: var(--card-bg);">
+                        <div class="metric-label" style="color: var(--text-secondary);">Total LLM Tokens Consumed</div>
+                        <div class="metric-value" id="adTotalTokens" style="font-size: 26px; color: #fff;">Loading...</div>
+                        <div class="metric-subtext">System-wide processing footprints</div>
+                    </div>
+                    <div class="metric-card" style="background: var(--card-bg);">
+                        <div class="metric-label" style="color: var(--text-secondary);">Token Consumed (Last 30 Days)</div>
+                        <div class="metric-value" id="adRecentTokens" style="font-size: 26px; color: #5EEAD4;">Loading...</div>
+                        <div class="metric-subtext">Recent LLM usage matrix</div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top: var(--spacing-xl); margin-bottom: var(--spacing-xl);">
+                    <h3 style="margin-bottom: var(--spacing-lg);">System Component Status</h3>
+                    
+                    <div class="status-checks">
+                        <div class="status-check">
+                            <div class="status-indicator success"></div>
+                            <div class="status-info">
+                                <p class="status-name">AI / LLM Infrastructure (Groq Llama 3)</p>
+                                <span class="status-desc">All models operational</span>
+                            </div>
+                        </div>
+                        <div class="status-check">
+                            <div class="status-indicator success"></div>
+                            <div class="status-info">
+                                <p class="status-name">Vector Databases</p>
+                                <span class="status-desc">SQLAlchemy 2.x synchronization active</span>
+                            </div>
+                        </div>
+                        <div class="status-check">
+                            <div class="status-indicator success"></div>
+                            <div class="status-info">
+                                <p class="status-name">WhatsApp Webhooks Gateway</p>
+                                <span class="status-desc">Active Meta API connections</span>
+                            </div>
+                        </div>
+                        <div class="status-check">
+                            <div class="status-indicator success"></div>
+                            <div class="status-info">
+                                <p class="status-name">SMTP Daemon Notification Pipeline</p>
+                                <span class="status-desc">Synchronous email pipeline online</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/admin-dashboard.js"></script>
+</body>
+</html>

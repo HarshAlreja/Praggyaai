@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Settings - BharatVoice</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="stylesheet" href="../../css/admin.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <script src="../../js/admin-guard.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .settings-grid {
+            display: block;
+        }
+        .settings-card {
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+        .settings-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-md);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: var(--spacing-sm);
+        }
+        .form-row {
+            margin-bottom: var(--spacing-lg);
+        }
+        .form-row:last-child {
+            margin-bottom: 0;
+        }
+        .form-input {
+            background: var(--card-bg);
+            color: white;
+            border: 1px solid var(--border-color);
+            padding: 8px;
+            width: 100%;
+            border-radius: 4px;
+        }
+        .flex-row {
+            display: table;
+            width: 100%;
+            margin-bottom: var(--spacing-md);
+        }
+        .flex-cell {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .toggle-status {
+            text-align: right;
+            width: 100px;
+        }
+        .hint-text {
+            color: var(--text-secondary);
+            font-size: 13px;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body class="dark-theme">
+    <div class="dashboard-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="../../index.html" class="sidebar-logo">
+                    <span class="logo-text">BharatVoice</span>
+                    <span style="font-size: 11px; color: var(--text-secondary);">Master</span>
+                </a>
+                <button class="sidebar-close" id="sidebarClose">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="admin-dashboard.html" class="sidebar-link"><span class="sidebar-icon">📊</span>Overview</a>
+                <a href="admin-businesses.html" class="sidebar-link"><span class="sidebar-icon">🏢</span>Businesses</a>
+                <a href="admin-revenue.html" class="sidebar-link"><span class="sidebar-icon">💰</span>Revenue</a>
+                <a href="admin-analytics.html" class="sidebar-link"><span class="sidebar-icon">📈</span>Analytics</a>
+                <a href="admin-support.html" class="sidebar-link"><span class="sidebar-icon">🆘</span>Support Tickets</a>
+                <a href="admin-settings.html" class="sidebar-link active"><span class="sidebar-icon">⚙️</span>Settings</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn btn-secondary btn-block" onclick="handleLogout()">Logout</button>
+            </div>
+        </aside>
+
+        <main class="dashboard-main">
+            <div class="dashboard-header">
+                <button class="hamburger-toggle" id="hamburgerToggle">☰</button>
+                <h2>System Settings</h2>
+                <div class="header-actions">
+                    <div class="profile-menu">
+                        <button class="profile-btn"><div class="avatar" style="background: linear-gradient(135deg, #7C5CFC 0%, #5EEAD4 100%); font-weight: bold;">SA</div></button>
+                        <div class="profile-dropdown">
+                            <a href="#" onclick="handleLogout()">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding: var(--spacing-lg);">
+                <div class="settings-grid">
+                    
+                    <div class="settings-card">
+                        <div class="settings-title">🤖 Global AI & LLM Configuration</div>
+                        <div class="form-row">
+                            <label class="form-label">Default LLM Provider</label>
+                            <select class="form-input" id="admSettingLlm">
+                                <option value="groq-llama3">Groq (Llama 3 70B)</option>
+                                <option value="openai-gpt4">OpenAI (GPT-4o mini)</option>
+                                <option value="anthropic-claude">Anthropic (Claude 3.5 Sonnet)</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label">Global Token Rate Limit (Per business / min)</label>
+                            <input type="number" class="form-input" id="admSettingRateLimit" value="50000">
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <div class="settings-title">🎙️ Voice & Translation Settings (Sarvam AI)</div>
+                        <div class="form-row">
+                            <label class="form-label">Primary Speech-to-Text Model</label>
+                            <select class="form-input" id="admSettingStt">
+                                <option value="sarvam-v2">Sarvam IndIC STT v2</option>
+                                <option value="whisper-large">OpenAI Whisper Large v3</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <div class="flex-row">
+                                <div class="flex-cell">
+                                    <strong>Enable Multilingual Indic Support</strong>
+                                    <div class="hint-text">Allows automatic detection and translation of Hindi, Marathi, Gujarati, etc.</div>
+                                </div>
+                                <div class="flex-cell toggle-status">
+                                    <span class="status-badge connected" style="cursor:pointer;" id="toggleMultilingual">Enabled</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <div class="settings-title">🌐 Meta WhatsApp Business Gateway</div>
+                        <div class="form-row">
+                            <label class="form-label">Global Webhook Verification Token</label>
+                            <input type="text" class="form-input" id="admSettingToken" value="bharatvoice_meta_secure_token_2026" readonly>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label">Meta API Version</label>
+                            <input type="text" class="form-input" id="admSettingApiVer" value="v20.0">
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <div class="settings-title">🛡️ Platform Security & Maintenance</div>
+                        <div class="form-row">
+                            <div class="flex-row">
+                                <div class="flex-cell">
+                                    <strong>Maintenance Mode</strong>
+                                    <div class="hint-text">Strictly restricts frontend client dashboard access for scheduled upgrades.</div>
+                                </div>
+                                <div class="flex-cell toggle-status">
+                                    <span id="admSettingMaint" style="color: var(--danger); font-weight: bold; cursor: pointer;">Disabled</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-top: 15px;">
+                            <button class="btn btn-primary" id="btnSaveMasterSettings">Save Configurations</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/admin-settings.js"></script>
+</body>
+</html>
