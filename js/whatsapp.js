@@ -15,8 +15,8 @@ const API_WA = `${API_BASE}/api/whatsapp`;
 
 // ⚠️ Replace with your real values from Meta App Dashboard >
 // Facebook Login for Business > Configurations. Neither is a secret.
-const META_APP_ID = 'YOUR_META_APP_ID';
-const META_CONFIG_ID = 'YOUR_META_CONFIG_ID';
+const META_APP_ID = '1857966605609478';
+const META_CONFIG_ID = '1695591958379882';
 const META_GRAPH_VERSION = 'v22.0';
 
 function showToastOrAlert(message, type) {
