@@ -1,19 +1,22 @@
 // whatsapp.js
-// Real Embedded Signup flow. "Connect WhatsApp" now launches Meta's own
-// FB.login() popup directly -- it does NOT open the old 3-field manual-entry
-// modal (waConnectModal) that used to ask for phone_number_id/WABA ID by hand.
-// That modal's markup is left untouched in the HTML but is no longer wired
-// into the connect flow, since a client never manually types those IDs in
-// the real architecture -- Meta returns them automatically.
+// Real Embedded Signup flow. "Connect WhatsApp" launches Meta's own
+// FB.login() popup directly.
+//
+// IMPORTANT FIX: `code` (from FB.login's callback) and `waba_id` +
+// `phone_number_id` (from Meta's separate postMessage event) arrive from
+// TWO DIFFERENT sources, not always at the same time. The backend needs
+// all three before it can complete onboarding -- sending just `code` and
+// letting the backend "discover" the WABA on its own causes a
+// "400 Bad Request on /me/whatsapp_business_accounts" failure. This version
+// waits for both pieces before calling the backend.
 
 const API_BASE = 'https://bharatvoice-backend-4t9e.onrender.com';
 const API_WA = `${API_BASE}/api/whatsapp`;
 
-// ⚠️ Replace these with your real values from Meta App Dashboard >
-// Facebook Login for Business > Configurations. Neither of these is a
-// secret -- both are meant to be public/client-side, unlike META_APP_SECRET.
-const META_APP_ID = '1857966605609478';
-const META_CONFIG_ID = '1695591958379882';
+// ⚠️ Replace with your real values from Meta App Dashboard >
+// Facebook Login for Business > Configurations. Neither is a secret.
+const META_APP_ID = 'YOUR_META_APP_ID';
+const META_CONFIG_ID = 'YOUR_META_CONFIG_ID';
 const META_GRAPH_VERSION = 'v22.0';
 
 function showToastOrAlert(message, type) {
@@ -24,7 +27,7 @@ function showToastOrAlert(message, type) {
     }
 }
 
-// ---- Load the Facebook JS SDK dynamically (no HTML changes needed) ----
+// ---- Load the Facebook JS SDK dynamically ----
 window.fbAsyncInit = function () {
     FB.init({
         appId: META_APP_ID,
@@ -42,24 +45,6 @@ window.fbAsyncInit = function () {
     js.src = 'https://connect.facebook.net/en_US/sdk.js';
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
-
-// ---- Capture waba_id / phone_number_id Meta sends via postMessage ----
-// (used only for UX feedback while connecting -- the backend independently
-// re-derives these via the Graph API using the exchanged code, so this isn't
-// required data, just a nicer loading message)
-let sessionInfo = null;
-
-window.addEventListener('message', function (event) {
-    if (!event.origin.endsWith('facebook.com')) return;
-    try {
-        const data = JSON.parse(event.data);
-        if (data.type === 'WA_EMBEDDED_SIGNUP' && data.event === 'FINISH') {
-            sessionInfo = data.data; // { phone_number_id, waba_id }
-        }
-    } catch (e) {
-        // Not a JSON message we care about -- ignore
-    }
-});
 
 document.addEventListener('DOMContentLoaded', function () {
     const token = localStorage.getItem('jwt_token');
@@ -145,7 +130,54 @@ document.addEventListener('DOMContentLoaded', function () {
         loadStatus();
     });
 
-    // --- Connect: launches Meta's own popup directly, no custom modal ---
+    // --- Connect: wait for BOTH the code (FB.login callback) AND
+    // waba_id/phone_number_id (postMessage event) before calling backend ---
+    let pendingCode = null;
+    let pendingSessionInfo = null;
+
+    function tryCompleteConnection() {
+        if (!pendingCode || !pendingSessionInfo) return; // still waiting on one of the two
+
+        const code = pendingCode;
+        const { waba_id, phone_number_id } = pendingSessionInfo;
+        pendingCode = null;
+        pendingSessionInfo = null;
+
+        showToastOrAlert('Connecting your WhatsApp number...', 'info');
+
+        fetch(`${API_WA}/callback`, {
+            method: 'POST',
+            headers: Object.assign({ 'Content-Type': 'application/json' }, headers),
+            body: JSON.stringify({ code, waba_id, phone_number_id }),
+        })
+        .then(res => res.json())
+        .then(payload => {
+            if (payload.status === 'success') {
+                showToastOrAlert('WhatsApp connected successfully!', 'success');
+                loadStatus();
+            } else {
+                alert('❌ ' + (payload.message || 'Connection failed'));
+            }
+        })
+        .catch(function (err) {
+            console.error('Callback error:', err);
+            alert('❌ Connection error. Is the backend running?');
+        });
+    }
+
+    window.addEventListener('message', function (event) {
+        if (!event.origin.endsWith('facebook.com')) return;
+        try {
+            const data = JSON.parse(event.data);
+            if (data.type === 'WA_EMBEDDED_SIGNUP' && data.event === 'FINISH') {
+                pendingSessionInfo = data.data; // { phone_number_id, waba_id }
+                tryCompleteConnection();
+            }
+        } catch (e) {
+            // Not a JSON message we care about -- ignore
+        }
+    });
+
     document.getElementById('btnConnectWhatsapp').addEventListener('click', function () {
         if (typeof FB === 'undefined') {
             alert('Facebook SDK not loaded yet -- try again in a moment.');
@@ -154,28 +186,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         FB.login(function (response) {
             if (response.authResponse && response.authResponse.code) {
-                const code = response.authResponse.code;
-
-                showToastOrAlert('Connecting your WhatsApp number...', 'info');
-
-                fetch(`${API_WA}/callback`, {
-                    method: 'POST',
-                    headers: Object.assign({ 'Content-Type': 'application/json' }, headers),
-                    body: JSON.stringify({ code: code }),
-                })
-                .then(res => res.json())
-                .then(payload => {
-                    if (payload.status === 'success') {
-                        showToastOrAlert('WhatsApp connected successfully!', 'success');
-                        loadStatus();
-                    } else {
-                        alert('❌ ' + (payload.message || 'Connection failed'));
-                    }
-                })
-                .catch(function (err) {
-                    console.error('Callback error:', err);
-                    alert('❌ Connection error. Is the backend running?');
-                });
+                pendingCode = response.authResponse.code;
+                tryCompleteConnection();
             } else {
                 console.log('User cancelled the Embedded Signup flow.');
             }
@@ -211,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // --- Test message modal (unchanged, matches existing backend contract) ---
+    // --- Test message modal ---
     const testModal = document.getElementById('waTestModal');
     document.getElementById('btnTestMessage').addEventListener('click', function () {
         testModal.style.display = 'flex';
